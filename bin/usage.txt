@@ -1,13 +1,14 @@
 
 USAGE: 
 
-   DemBones  -a=<filename> ...  -i=<filename> ...  -o=<filename> ... 
-             [-b=<int>] [--nInitIters=<int>] [-n=<int>]
-             [--nTransIters=<int>] [--bindUpdate=<int>]
-             [--transAffine=<double>] [--transAffineNorm=<double>]
-             [--nWeightsIters=<int>] [-z=<int>] [--weightsSmooth=<double>]
-             [--weightsSmoothStep=<double>] [--dbg=<int>]
-             [--log=<filename>] [--] [--version] [-h]
+   DemBones      -a=<filename> ...  -i=<filename> ...  -o=<filename> ... 
+                 [-b=<int>] [--nInitIters=<int>] [-n=<int>]
+                 [--tolerance=<double>] [--patience=<int>]
+                 [--nTransIters=<int>] [--bindUpdate=<int>]
+                 [--transAffine=<double>] [--transAffineNorm=<double>]
+                 [--nWeightsIters=<int>] [-z=<int>]
+                 [--weightsSmooth=<double>] [--weightsSmoothStep=<double>]
+                 [--dbg=<int>] [--log=<filename>] [--] [--version] [-h]
 
 
 Where: 
@@ -31,11 +32,20 @@ Where:
    -n=<int>,  --nIters=<int>
      number of global iterations
 
+   --tolerance=<double>
+     convergence tolerance, stop if error relatively reduces less than
+     [--tolerance] in [--patience] consecutive iterations
+
+   --patience=<int>
+     convergence patience, stop if error relatively reduces less than
+     [--tolerance] in [--patience] consecutive iterations
+
    --nTransIters=<int>
      number of transformation update iterations per global iteration
 
    --bindUpdate=<int>
-     update bind pose (0=no update, 1=update joint positions)
+     update bind pose (0=no update, 1=update joint positions, 2=regroup
+     joints under one root)
 
    --transAffine=<double>
      bone translations affinity soft constraint
@@ -73,6 +83,14 @@ Where:
 
    Dem Bones - (c) Electronic Arts 2019
 
-   Note: this tool only handles clean input data, i.e. only one piece of
+   - This tool only handles clean input data, i.e. only one piece of
    geometry with one skinCluster and no excessive joint.
+
+   - To hard-lock the transformations of bones: in the input fbx files,
+   create bool attributes for joint nodes (bones) with name "demLock" and
+   set the value to "true".
+
+   - To soft-lock skinning weights of vertices: in the input fbx files,
+   paint per-vertex colors in gray-scale. The closer the color to white,
+   the more skinning weights of the vertex are preserved.
 

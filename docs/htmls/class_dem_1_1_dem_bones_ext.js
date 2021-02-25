@@ -15,6 +15,7 @@ var class_dem_1_1_dem_bones_ext =
     [ "bindUpdate", "class_dem_1_1_dem_bones_ext.html#a92939c0de147f8075754d9cbf66113fc", null ],
     [ "boneName", "class_dem_1_1_dem_bones_ext.html#afcf732ef4b030e907b7054232cc255f5", null ],
     [ "fTime", "class_dem_1_1_dem_bones_ext.html#aebbc9093e05f8d3a466fe40610f5289d", null ],
+    [ "orient", "class_dem_1_1_dem_bones_ext.html#a9a6a2004f16832cd3f97c22789147a8a", null ],
     [ "parent", "class_dem_1_1_dem_bones_ext.html#ad740868b3bc6cdf34e6e2ec5f35e24d7", null ],
     [ "preMulInv", "class_dem_1_1_dem_bones_ext.html#a3785152d056860bc55febcad64837ef3", null ],
     [ "rotOrder", "class_dem_1_1_dem_bones_ext.html#a30f4bfbe88493adecae038035e0b33be", null ]
